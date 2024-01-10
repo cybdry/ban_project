@@ -27,8 +27,8 @@ def calculate_linear_speed(x,y,z):
     return sqrt(int(x)**2 + int(y)**2 + int(z)**2)
 
 def sensor_fusion(bpm, speed)->bool:
-    bpm_threshold = 120
-    speed_threshold = 20
+    bpm_threshold = 70
+    speed_threshold = 2
 
     if(bpm > bpm_threshold and speed > speed_threshold):
         return True
@@ -43,7 +43,7 @@ def index():
 def get_data_route():
     data = reference_database.get();
     bpm = data["heart"]["rate"]
-    linear_speed = calculate_linear_speed(data["acc"]["x"],data["acc"]["y"],data["acc"]["z"]);
+    linear_speed = calculate_linear_speed(data["acc"]["x"],data["acc"]["y"],data["acc"]["z"]) - 6;
     print("BPM: ",bpm)
     print("Linear speed: ",linear_speed)
     alert_ref = reference_database.child('alert')

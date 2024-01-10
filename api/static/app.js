@@ -33,7 +33,8 @@
 
 				const speed = calculateLinearSpeed(parseInt(data.acc.x.toFixed(3)), parseInt(data.acc.y.toFixed(3)),parseInt(data.acc.z.toFixed(3)));
 				console.log("Speed :",speed)
-        document.getElementById('speed').textContent = speed.toFixed(3);
+				const normalize_speed = speed - 6;
+        document.getElementById('speed').textContent =  normalize_speed.toFixed(3);
 
         // Biometric Insights data
         document.getElementById('temp').textContent = data.temp.toFixed(2);
